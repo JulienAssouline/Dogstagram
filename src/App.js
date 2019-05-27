@@ -1,25 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { ApolloProvider } from "react-apollo-hooks";
+import client from "./apolloclient"
+import Dogs from "./Dogs"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import AllBreeds from "./AllBreeds"
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client = {client}>
+      <Router>
+        <Route path='/' exact component={AllBreeds} />
+        <Route path='/feed:dog' exact component={Dogs} />
+      </Router>
+    </ApolloProvider>
   );
 }
 
