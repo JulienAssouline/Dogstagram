@@ -3,6 +3,9 @@ import gql from "graphql-tag";
 import { useQuery } from 'react-apollo-hooks';
 import capitalizeFirstLetter from "./capitalizeFirstLetter"
 
+import store from "./Redux/store/index";
+import { addArticle } from "./Redux/actions/index"
+
 const GET_DOGS = gql`
   {
     dogs {
@@ -15,6 +18,13 @@ const GET_DOGS = gql`
 
 const AllBreeds = (props) => {
   const { data, error, loading } = useQuery(GET_DOGS);
+
+  console.log(store.getState())
+
+  store.subscribe(() => console.log("look ma, redux!"))
+
+  store.dispatch( addArticle({ title: "React Redux Tutorial for Beginners", id: 1}))
+
   if (loading) {
     return <div>Loading...</div>;
   };

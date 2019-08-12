@@ -4,6 +4,7 @@ import { useQuery } from 'react-apollo-hooks';
 import capitalizeFirstLetter from "./capitalizeFirstLetter"
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Likes from "./Likes"
 
 
 
@@ -45,6 +46,7 @@ const Dogs = (props) => {
 
   return (
     <div>
+    <Likes />
     <h1 className = "breed-title"> {capitalizeFirstLetter(props.match.params.dog)} </h1>
     <ul className = "image-grid">
       {data.dog.images.map((dog, i) => (
