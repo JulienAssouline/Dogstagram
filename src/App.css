@@ -66,3 +66,16 @@ h1 {
   color: pink;
 }
 
+
+.list-app-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.form-container {
+  margin: 10px
+}
+
+.articles-container {
+  margin: 10px
+}

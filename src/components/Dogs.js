@@ -1,7 +1,7 @@
 import React from 'react';
 import gql from "graphql-tag";
 import { useQuery } from 'react-apollo-hooks';
-import capitalizeFirstLetter from "./capitalizeFirstLetter"
+import capitalizeFirstLetter from "../capitalizeFirstLetter"
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Likes from "./Likes"
