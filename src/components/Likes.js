@@ -1,11 +1,19 @@
 import React from 'react';
+import { connect } from "react-redux"
 
-const Likes = () => {
+const mapStateToProps = state => {
+  return { likes: state.likes }
+}
+
+
+const ConnectedLikes = ({ likes }) => {
   return (
     <div>
-      <h2> Likes: </h2>
+      <h2> Likes: {likes} </h2>
     </div>
   );
 };
+
+const Likes = connect(mapStateToProps)(ConnectedLikes)
 
 export default Likes

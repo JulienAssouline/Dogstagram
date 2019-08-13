@@ -6,7 +6,15 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Likes from "./Likes"
 
+import { connect } from "react-redux"
+import uuidv1 from "uuid"
+import { addLike } from "../Redux/actions/index"
 
+function mapDispatchToProps(dispatch) {
+  return {
+    addLike: like => dispatch(addLike(like))
+  }
+}
 
 const GET_DOGS = gql`
   query getDogByBreed($breed: String!){
@@ -21,16 +29,23 @@ const GET_DOGS = gql`
 
 
 
-const Dogs = (props) => {
+const ConnectDogs = (props) => {
 
-  function handleClick(e, id) {
+  function handleClick(e) {
 
     if (e.currentTarget.classList.length === 4) {
       e.currentTarget.classList.add('clicked')
+
+      const id = uuidv1();
+      props.addLike({likes: 1, id, clicked: true})
+
     } else {
       e.currentTarget.classList.remove('clicked')
-    }
 
+      const id = uuidv1();
+      props.addLike({likes: 1, id, clicked: false})
+
+    }
 
   }
 
@@ -64,5 +79,7 @@ const Dogs = (props) => {
     </div>
   );
 };
+
+const Dogs = connect(null, mapDispatchToProps)(ConnectDogs)
 
 export default Dogs
