@@ -8,12 +8,19 @@ import Likes from "./Likes"
 
 import { connect } from "react-redux"
 import uuidv1 from "uuid"
-import { addLike } from "../Redux/actions/index"
+import { ADD_LIKE, REMOVE_LIKE} from "../Redux/constants/action-types"
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addLike: like => dispatch(addLike(like))
-  }
+
+// import { addLike } from "../Redux/actions/index"
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     addLike: like => dispatch(addLike(like))
+//   }
+// }
+
+const mapStateToProps = state => {
+  return { likes: state.likes }
 }
 
 const GET_DOGS = gql`
@@ -37,13 +44,13 @@ const ConnectDogs = (props) => {
       e.currentTarget.classList.add('clicked')
 
       const id = uuidv1();
-      props.addLike({likes: 1, id, clicked: true})
+      props.dispatch({type: ADD_LIKE, id})
 
     } else {
       e.currentTarget.classList.remove('clicked')
 
       const id = uuidv1();
-      props.addLike({likes: 1, id, clicked: false})
+      props.dispatch({type: REMOVE_LIKE, id})
 
     }
 
@@ -80,6 +87,6 @@ const ConnectDogs = (props) => {
   );
 };
 
-const Dogs = connect(null, mapDispatchToProps)(ConnectDogs)
+const Dogs = connect(mapStateToProps)(ConnectDogs)
 
 export default Dogs

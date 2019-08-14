@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FOUND_BAD_WORD, ADD_LIKE } from "../constants/action-types"
+import { ADD_ARTICLE, FOUND_BAD_WORD, ADD_LIKE, REMOVE_LIKE } from "../constants/action-types"
 
 
 
@@ -22,18 +22,16 @@ function rootReducer(state = initialState, action) {
     })
   }
   if (action.type === ADD_LIKE) {
-      if (action.payload.clicked) {
         return {
           ...state,
-          likes: state.likes + 1
+          likes: state.likes
         }
-      }
-      else {
-        return {
+  }
+  if (action.type === REMOVE_LIKE) {
+    return {
           ...state,
-          likes: state.likes - 1
+          likes: state.likes
         }
-      }
   }
   return state;
 }
