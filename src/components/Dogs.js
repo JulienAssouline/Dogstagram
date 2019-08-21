@@ -11,14 +11,6 @@ import uuidv1 from "uuid"
 import { ADD_LIKE, REMOVE_LIKE} from "../Redux/constants/action-types"
 
 
-// import { addLike } from "../Redux/actions/index"
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     addLike: like => dispatch(addLike(like))
-//   }
-// }
-
 const mapStateToProps = state => {
   return { likes: state.likes }
 }

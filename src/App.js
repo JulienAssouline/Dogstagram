@@ -8,6 +8,7 @@ import AllBreeds from "./components/AllBreeds"
 import { Provider } from "react-redux";
 import store from "./Redux/store/index"
 import ListApp from "./components/ListApp"
+import Posts from "./components/Posts"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/' exact component={AllBreeds} />
           <Route path='/feed:dog' exact component={Dogs} />
           <Route path= '/listapp' exact component = {ListApp} />
+          <Route path = '/posts' exact component = {Posts} />
         </Router>
       </Provider>
     </ApolloProvider>

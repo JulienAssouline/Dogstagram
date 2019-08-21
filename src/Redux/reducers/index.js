@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, FOUND_BAD_WORD, ADD_LIKE, REMOVE_LIKE } from "../constants/action-types"
+import { ADD_ARTICLE, FOUND_BAD_WORD, ADD_LIKE, REMOVE_LIKE, DATA_LOADED } from "../constants/action-types"
 
 
 
@@ -6,6 +6,7 @@ const initialState = {
   articles: [],
   likes: 0,
   badWords: [],
+  remoteArticles: [],
 }
 
 // reducers produce the state of your application.
@@ -32,6 +33,11 @@ function rootReducer(state = initialState, action) {
           ...state,
           likes: state.likes
         }
+  }
+  if (action.type === DATA_LOADED) {
+    return Object.assign({}, state, {
+      remoteArticles: state.remoteArticles.concat(action.payload)
+    })
   }
   return state;
 }

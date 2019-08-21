@@ -2,6 +2,7 @@ import React from "react";
 import List from "./List";
 import Form from "./Form";
 import Message from "./Message"
+import Posts from "./Posts"
 
 const ListApp = () => {
   return (
@@ -17,6 +18,10 @@ const ListApp = () => {
         </div>
       </div>
       <Message />
+      <div className="posts">
+        <h2>API posts</h2>
+        <Posts />
+      </div>
     </div>
     )
 };
